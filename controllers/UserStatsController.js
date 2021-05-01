@@ -14,7 +14,7 @@ const userStats = {
         };
 
         try {
-            const newUserStats = await new Subject(newUserStatsContent).save((err, userStats) => {
+            const newUserStats = await new UserStats(newUserStatsContent).save((err, userStats) => {
                 res.send(userStats);
                 console.log(userStats);
             });
