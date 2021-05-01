@@ -13,13 +13,15 @@ const MemoryStore = require('memorystore')(session)
 const app = express();
 app.use(bodyParser.json());
 app.use(cors());
-// app.use(session({
-//     cookie: { maxAge: 86400000 },
-//     store: new MemoryStore({
-//         checkPeriod: 86400000 // prune expired entries every 24h
-//     }),
-//     secret: 'keyboard cat'
-// }))
+app.use(session({
+    cookie: { maxAge: 86400000 },
+    store: new MemoryStore({
+        checkPeriod: 86400000 // prune expired entries every 24h
+    }),
+    secret: 'keyboard cat',
+    resave: true,
+    saveUninitialized: true
+}))
 
 if (!mongoose.connect(process.env.NODE_DATABASE, { useNewUrlParser: true, useUnifiedTopology: true })) console.log("blad")
 mongoose.set('useCreateIndex', true);
