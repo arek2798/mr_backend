@@ -4,7 +4,7 @@ require('../models/UserStats');
 const UserStats = mongoose.model('userStats');
 
 const userStats = {
-    addSubject: async (req, res) => {
+    addUserStats: async (req, res) => {
         const newUserStatsContent = {
             userID: req.body.userID,
             points: req.body.points,
