@@ -14,15 +14,13 @@ const user = {
 
         try {
             await new User(newUserContent).save((err, user) => {
-
                 console.log(err)
-                // if (err.code === 11000) throw new Error("User already exists");
-                if (err.code === 11000) res.sendStatus(409);
-                else res.send(user);
+                if (err.code === 11000) res.json({ errorCode: 409, message: 'User already exists' })
+                else if (err) res.json({ errorCode: 501, message: 'User cannot be created' })
+                else res.send(user)
             })
         } catch (err) {
             console.log(err);
-            console.log(err.code);
             res.sendStatus(500);
         }
     },
@@ -31,14 +29,14 @@ const user = {
         sess = req.session;
         User.findOne({ email: req.body.email })
             .then((user) => {
-                if (!user) return res.json({ errorCode: 21, message: 'Login failed, user not found' })
+                if (!user) return res.json({ errorCode: 404, message: 'Login failed, user not found' })
                 bcrypt.compare(req.body.password, user.password, (err, result) => {
                     if (result === true) {
                         sess.email = req.body.email;
                         console.log(sess);
                         res.send(user)
                     } else {
-                        res.json({ errorCode: 22, message: 'Not allowed' })
+                        res.json({ errorCode: 405, message: 'Not allowed' })
                         console.log("Not allowed")
                     }
                 })
