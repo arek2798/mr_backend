@@ -15,7 +15,7 @@ const user = {
         try {
             await new User(newUserContent).save((err, user) => {
                 console.log(err)
-                if (err.code === 11000) res.json({ errorCode: 409, message: 'User already exists' })
+                if (err && err.code === 11000) res.json({ errorCode: 409, message: 'User already exists' })
                 else if (err) res.json({ errorCode: 501, message: 'User cannot be created' })
                 else res.json({ errorCode: 201, message: 'User has been created' });
             })
