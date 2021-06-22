@@ -15,6 +15,7 @@ const user = {
         try {
             await new User(newUserContent).save((err, user) => {
                 res.send(user);
+                console.log(err)
             })
         } catch (err) {
             console.log(err);

@@ -31,9 +31,8 @@ const userStats = {
             level: req.body.level,
             avatarType: req.body.avatarType,
         };
-        console.log(updatedUserStatsContent);
         UserStats.findByIdAndUpdate(req.params.id, updatedUserStatsContent)
-            .then((updatedUserStats) => (res.send(updatedUserStats), console.log(updatedUserStats)))
+            .then((updatedUserStats) => (res.send(updatedUserStats)))
             .catch((err) => console.log(err));
     },
     deleteUserStats: (req, res) => {
