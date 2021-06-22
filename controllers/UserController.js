@@ -16,10 +16,11 @@ const user = {
             await new User(newUserContent).save((err, user) => {
                 res.send(user);
                 console.log(err)
-                if (err) res.sendStatus(409);
+                if (err.code === 11000) throw new Error("User already exists");
             })
         } catch (err) {
             console.log(err);
+            console.log(err.code);
             res.sendStatus(500);
         }
     },
