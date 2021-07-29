@@ -1,6 +1,6 @@
 const express = require('express');
 
-const { user, userStats, question } = require('../controllers');
+const { user, userStats, test, question } = require('../controllers');
 
 const router = express.Router();
 
@@ -20,5 +20,9 @@ router.delete('/userstats/:id', userStats.deleteUserStats);
 
 router.get('/question', question.getQuestion);
 router.post('/question', question.addQuestion);
+
+router.get('/test', test.getTest);
+router.get('/tests', test.getAllTests);
+router.post('/tests', test.addTest);
 
 module.exports = router;
