@@ -25,7 +25,7 @@ const question = {
     },
     getQuestion: (req, res) => {
         console.log(req.query);
-        question.find({ testID: req.query.testID })
+        Question.find({ testID: req.query.testID })
             .then((results) => res.send(results))
             .catch((err) => console.log(err));
     }
