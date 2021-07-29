@@ -8,9 +8,7 @@ const question = {
         const newQuestionContent = {
             testID: req.body.testID,
             question: req.body.question,
-            answer1: req.body.answer1,
-            answer2: req.body.answer2,
-            answer3: req.body.answer3,
+            answers: req.body.answers
         };
 
         try {
