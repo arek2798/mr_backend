@@ -21,11 +21,7 @@ const QuestionSchema = new Schema({
     answer3: {
         type: String,
         required: true,
-    },
-    answer4: {
-        type: String,
-        required: true,
     }
-}, { collection: "question" });
+}, { collection: "questions" });
 
 mongoose.model('question', QuestionSchema);
