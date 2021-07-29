@@ -9,17 +9,10 @@ const QuestionSchema = new Schema({
     question: {
         type: String,
         required: true,
+        unique: true
     },
-    answer1: {
-        type: String,
-        required: true,
-    },
-    answer2: {
-        type: String,
-        required: true,
-    },
-    answer3: {
-        type: String,
+    answers: {
+        type: Array,
         required: true,
     }
 }, { collection: "questions" });
