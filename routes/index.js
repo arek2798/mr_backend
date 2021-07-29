@@ -1,6 +1,6 @@
 const express = require('express');
 
-const { user, userStats } = require('../controllers');
+const { user, userStats, question } = require('../controllers');
 
 const router = express.Router();
 
@@ -17,5 +17,8 @@ router.get('/userstats', userStats.getUserStats);
 router.post('/userstats', userStats.addUserStats);
 router.put('/userstats/:id', userStats.updateUserStats);
 router.delete('/userstats/:id', userStats.deleteUserStats);
+
+router.get('/question', question.getQuestion);
+router.post('/question', question.addQuestion);
 
 module.exports = router;
