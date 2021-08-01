@@ -6,6 +6,11 @@ const TestSchema = new Schema({
         type: String,
         required: true,
         unique: true
+    },
+    slug: {
+        type: String,
+        require: true,
+        unique: true
     }
 }, { collection: "tests" });
 

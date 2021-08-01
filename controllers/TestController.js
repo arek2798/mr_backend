@@ -6,7 +6,8 @@ const Test = mongoose.model('test');
 const test = {
     addTest: async (req, res) => {
         const newTestContent = {
-            title: req.body.title
+            title: req.body.title,
+            slug: req.body.slug
         };
 
         try {
