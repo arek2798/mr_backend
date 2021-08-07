@@ -11,6 +11,7 @@ const userStats = {
             dayQuestion: req.body.dayQuestion,
             level: req.body.level,
             avatarType: req.body.avatarType,
+            badges: req.body.badges,
             lessonsStats: req.body.lessonsStats,
             testsStats: req.body.testsStats
         };
@@ -32,6 +33,9 @@ const userStats = {
             dayQuestion: req.body.dayQuestion,
             level: req.body.level,
             avatarType: req.body.avatarType,
+            badges: req.body.badges,
+            lessonsStats: req.body.lessonsStats,
+            testsStats: req.body.testsStats,
         };
         UserStats.findByIdAndUpdate(req.params.id, updatedUserStatsContent)
             .then((updatedUserStats) => (res.send(updatedUserStats)))
