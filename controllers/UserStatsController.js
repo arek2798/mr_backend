@@ -11,6 +11,8 @@ const userStats = {
             dayQuestion: req.body.dayQuestion,
             level: req.body.level,
             avatarType: req.body.avatarType,
+            lessonsStats: req.body.lessonsStats,
+            testsStats: req.body.testsStats
         };
 
         try {

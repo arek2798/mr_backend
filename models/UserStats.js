@@ -22,7 +22,18 @@ const UserStatsSchema = new Schema({
     avatarType: {
         type: String,
         required: true,
-    }
+    },
+    lessonsStats: [
+        {
+            lessonId: String,
+        }
+    ],
+    testsStats: [
+        {
+            testId: String,
+            maksScore: Number,
+        }
+    ],
 }, { collection: "userStats" });
 
 mongoose.model('userStats', UserStatsSchema);
