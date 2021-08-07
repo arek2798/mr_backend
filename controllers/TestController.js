@@ -28,7 +28,7 @@ const test = {
     },
     getTest: (req, res) => {
         console.log(req.query);
-        Test.find({ _id: req.query.testID })
+        Test.find({ slug: req.query.slug })
             .then((results) => res.send(results))
             .catch((err) => console.log(err));
     }
