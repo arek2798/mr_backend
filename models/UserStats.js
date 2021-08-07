@@ -23,6 +23,9 @@ const UserStatsSchema = new Schema({
         type: String,
         required: true,
     },
+    badges: {
+        type: Array
+    },
     lessonsStats: [
         {
             lessonId: String,

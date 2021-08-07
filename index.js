@@ -23,7 +23,7 @@ app.use(session({
     saveUninitialized: true
 }))
 
-if (!mongoose.connect(process.env.NODE_DATABASE, { useNewUrlParser: true, useUnifiedTopology: true })) console.log("blad")
+if (!mongoose.connect(process.env.NODE_DATABASE, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false })) console.log("blad")
 mongoose.set('useCreateIndex', true);
 
 const conn = mongoose.connection;
