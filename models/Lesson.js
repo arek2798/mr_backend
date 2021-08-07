@@ -23,6 +23,10 @@ const LessonSchema = new Schema({
     icon: {
         type: String,
         require: true,
+    },
+    color: {
+        type: String,
+        require: true,
     }
 }, { collection: "lessons" });
 

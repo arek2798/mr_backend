@@ -10,7 +10,8 @@ const lesson = {
             slug: req.body.slug,
             desc: req.body.desc,
             content: req.body.content,
-            icon: req.body.icon
+            icon: req.body.icon,
+            color: req.body.color,
         };
 
         try {
