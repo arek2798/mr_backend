@@ -1,6 +1,6 @@
 const express = require('express');
 
-const { user, userStats, test, question } = require('../controllers');
+const { user, userStats, test, question, lesson } = require('../controllers');
 
 const router = express.Router();
 
@@ -18,5 +18,9 @@ router.post('/question', question.addQuestion);
 router.get('/test', test.getTest);
 router.get('/tests', test.getAllTests);
 router.post('/tests', test.addTest);
+
+router.get('/lesson', lesson.getLesson);
+router.get('/lessons', lesson.getAllLessons);
+router.post('/lessons', lesson.addLesson);
 
 module.exports = router;
