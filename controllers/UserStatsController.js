@@ -8,7 +8,7 @@ const userStats = {
         const newUserStatsContent = {
             userID: req.body.userID,
             points: req.body.points,
-            dayQuestion: req.body.dayQuestion,
+            lastDayQuestion: req.body.lastDayQuestion,
             level: req.body.level,
             avatarType: req.body.avatarType,
             badges: req.body.badges,
@@ -30,7 +30,7 @@ const userStats = {
         const updatedUserStatsContent = {
             userID: req.body.userID,
             points: req.body.points,
-            dayQuestion: req.body.dayQuestion,
+            lastDayQuestion: req.body.lastDayQuestion,
             level: req.body.level,
             avatarType: req.body.avatarType,
             badges: req.body.badges,
