@@ -11,8 +11,8 @@ const UserStatsSchema = new Schema({
         type: Number,
         required: true,
     },
-    dayQuestion: {
-        type: Boolean,
+    lastDayQuestion: {
+        type: Date,
         required: true,
     },
     level: {
