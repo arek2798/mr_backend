@@ -37,6 +37,14 @@ const UserStatsSchema = new Schema({
             maksScore: Number,
         }
     ],
+    loginStats: [
+        {
+            loginDate: Date,
+        }
+    ],
+    testsInRow: {
+        type: Number,
+    },
 }, { collection: "userStats" });
 
 mongoose.model('userStats', UserStatsSchema);

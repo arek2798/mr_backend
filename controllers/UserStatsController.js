@@ -13,7 +13,9 @@ const userStats = {
             avatarType: req.body.avatarType,
             badges: req.body.badges,
             lessonsStats: req.body.lessonsStats,
-            testsStats: req.body.testsStats
+            testsStats: req.body.testsStats,
+            loginStats: req.body.loginStats,
+            testsInRow: req.body.testsInRow
         };
 
         try {
@@ -36,6 +38,8 @@ const userStats = {
             badges: req.body.badges,
             lessonsStats: req.body.lessonsStats,
             testsStats: req.body.testsStats,
+            loginStats: req.body.loginStats,
+            testsInRow: req.body.testsInRow
         };
         UserStats.findByIdAndUpdate(req.params.id, updatedUserStatsContent)
             .then((updatedUserStats) => (res.send(updatedUserStats)))
