@@ -15,7 +15,8 @@ const userStats = {
             lessonsStats: req.body.lessonsStats,
             testsStats: req.body.testsStats,
             loginStats: req.body.loginStats,
-            testsInRow: req.body.testsInRow
+            testsInRow: req.body.testsInRow,
+            dayQuestion: req.body.dayQuestion
         };
 
         try {
@@ -39,7 +40,8 @@ const userStats = {
             lessonsStats: req.body.lessonsStats,
             testsStats: req.body.testsStats,
             loginStats: req.body.loginStats,
-            testsInRow: req.body.testsInRow
+            testsInRow: req.body.testsInRow,
+            dayQuestion: req.body.dayQuestion
         };
         UserStats.findByIdAndUpdate(req.params.id, updatedUserStatsContent)
             .then((updatedUserStats) => (res.send(updatedUserStats)))

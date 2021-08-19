@@ -45,6 +45,12 @@ const UserStatsSchema = new Schema({
     testsInRow: {
         type: Number,
     },
+    dayQuestion: [
+        {
+            questionId: String,
+            date: Date,
+        }
+    ],
 }, { collection: "userStats" });
 
 mongoose.model('userStats', UserStatsSchema);
