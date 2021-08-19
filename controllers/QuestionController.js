@@ -21,9 +21,15 @@ const question = {
             res.sendstatus(500);
         }
     },
-    getQuestion: (req, res) => {
+    getTestQuestions: (req, res) => {
         console.log(req.query);
         Question.find({ testID: req.query.testID })
+            .then((results) => res.send(results))
+            .catch((err) => console.log(err));
+    },
+    getQuestion: (req, res) => {
+        console.log(req.query);
+        Question.find({ _id: req.query.id })
             .then((results) => res.send(results))
             .catch((err) => console.log(err));
     }
