@@ -45,9 +45,17 @@ const user = {
     },
 
     updateUser: (req, res) => {
+        let hashedPassword = '';
+        bcrypt.hash(req.body.newPassword, 10, function (err, hash) {
+            if (err) {
+                console.log(err);
+            }
+            console.log(hash);
+            hashedPassword = hash;
+        })
         const newUserContent = {
             email: req.body.user.email,
-            password: req.body.newPassword,
+            password: hashedPassword,
             name: req.body.user.name,
         };
         User.findOne({ email: req.body.user.email })
@@ -55,13 +63,6 @@ const user = {
                 if (!user) return res.json({ errorCode: 404, message: 'Login failed, user not found' })
                 bcrypt.compare(req.body.password, user.password, (err, result) => {
                     if (result === true) {
-                        // bcrypt.hash(req.body.newPassword, 10, function (err, hash) {
-                        //     if (err) {
-                        //         console.log(err);
-                        //     }
-                        //     newUserContent.password = hash;
-                        // })
-                        // console.log(newUserContent);
                         User.findByIdAndUpdate(req.params.id, newUserContent)
                             .then((updatedUser) => (res.send(updatedUser)))
                             .catch((err) => console.log(err));
