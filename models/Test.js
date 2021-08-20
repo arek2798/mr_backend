@@ -7,6 +7,10 @@ const TestSchema = new Schema({
         required: true,
         unique: true
     },
+    icon: {
+        type: String,
+        required: true
+    },
     slug: {
         type: String,
         require: true,
