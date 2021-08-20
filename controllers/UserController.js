@@ -57,10 +57,11 @@ const user = {
                     if (result === true) {
                         bcrypt.hash(req.body.newPassword, 10, function (err, hash) {
                             if (err) {
-                                return next(err);
+                                console.log(err);
                             }
                             newUserContent.password = hash;
                         })
+                        console.log(newUserContent);
                         User.findByIdAndUpdate(req.params.id, newUserContent)
                             .then((updatedUser) => (res.send(updatedUser)))
                             .catch((err) => console.log(err));
