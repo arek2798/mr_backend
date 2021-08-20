@@ -45,17 +45,17 @@ const user = {
     },
 
     updateUser: (req, res) => {
-        let hashedPassword = '';
-        bcrypt.hash(req.body.newPassword, 10, function (err, hash) {
-            if (err) {
-                console.log(err);
-            }
-            console.log(hash);
-            hashedPassword = hash;
-        })
+        // let hashedPassword = '';
+        // bcrypt.hash(req.body.newPassword, 10, function (err, hash) {
+        //     if (err) {
+        //         console.log(err);
+        //     }
+        //     console.log(hash);
+        //     hashedPassword = hash;
+        // })
         const newUserContent = {
             email: req.body.user.email,
-            password: hashedPassword,
+            password: req.body.newPassword,
             name: req.body.user.name,
         };
         User.findOne({ email: req.body.user.email })
