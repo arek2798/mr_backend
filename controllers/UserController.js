@@ -42,6 +42,29 @@ const user = {
                 })
             })
             .catch(err => console.log(err))
+    },
+
+    updateUser: (req, res) => {
+        const newUserContent = {
+            email: req.body.email,
+            password: req.body.password,
+            name: req.body.name,
+        };
+        User.findByIdAndUpdate(req.params.id, newUserContent)
+            .then((updatedUser) => (res.send(updatedUser)))
+            .catch((err) => console.log(err));
+    },
+
+    deleteUser: (req, res) => {
+        Event.findByIdAndDelete(req.params.id)
+            .then(result => {
+                if (!result) {
+                    res.sendStatus(404);
+                    res.send(result)
+                }
+                else res.sendStatus(200);
+            })
+            .catch(err => res.sendStatus(500));
     }
 }
 

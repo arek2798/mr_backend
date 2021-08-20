@@ -6,6 +6,8 @@ const router = express.Router();
 
 router.post('/user/signin', user.loginUser);
 router.post('/user', user.addUser);
+router.put('/user/:id', user.updateUser);
+router.delete('/user/:id', user.deleteUser);
 
 router.get('/userstats', userStats.getUserStats);
 router.post('/userstats', userStats.addUserStats);
