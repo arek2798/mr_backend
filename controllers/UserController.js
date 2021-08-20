@@ -50,7 +50,7 @@ const user = {
             password: req.body.newPassword,
             name: req.body.user.name,
         };
-        User.findOne({ email: req.body.email })
+        User.findOne({ email: req.body.user.email })
             .then((user) => {
                 if (!user) return res.json({ errorCode: 404, message: 'Login failed, user not found' })
                 bcrypt.compare(req.body.password, user.password, (err, result) => {
