@@ -45,7 +45,7 @@ const user = {
     },
 
     updateUser: (req, res) => {
-        let hashedPassword = bcrypt.hash(req.body.newPassword, 10);
+        // let hashedPassword = bcrypt.hash(req.body.newPassword, 10);
         // bcrypt.hash(req.body.newPassword, 10, function (err, hash) {
         //     if (err) {
         //         console.log(err);
@@ -53,10 +53,10 @@ const user = {
         //     console.log(hash);
         //     hashedPassword = hash;
         // })
-        console.log(hashedPassword);
+        // console.log(hashedPassword);
         const newUserContent = {
             email: req.body.user.email,
-            password: hashedPassword,
+            password: req.body.newPassword,
             name: req.body.user.name,
         };
         User.findOne({ email: req.body.user.email })
