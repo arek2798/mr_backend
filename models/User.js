@@ -29,5 +29,15 @@ userSchema.pre('save', function (next) {
         next();
     })
 });
+userSchema.pre('findByIdAndUpdate', function (next) {
+    var user = this;
+    bcrypt.hash(user.password, 10, function (err, hash) {
+        if (err) {
+            return next(err);
+        }
+        user.password = hash;
+        next();
+    })
+});
 
 mongoose.model('user', userSchema);
