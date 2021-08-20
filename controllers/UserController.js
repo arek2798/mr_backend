@@ -50,16 +50,21 @@ const user = {
             password: req.body.newPassword,
             name: req.body.user.name,
         };
-        bcrypt.compare(req.body.password, user.password, (err, result) => {
-            if (result === true) {
-                User.findByIdAndUpdate(req.params.id, newUserContent)
-                    .then((updatedUser) => (res.send(updatedUser)))
-                    .catch((err) => console.log(err));
-            } else {
-                res.json({ errorCode: 409, message: 'Password does not match' })
-                console.log("Password does not match")
-            }
-        })
+        User.findOne({ email: req.body.email })
+            .then((user) => {
+                if (!user) return res.json({ errorCode: 404, message: 'Login failed, user not found' })
+                bcrypt.compare(req.body.password, user.password, (err, result) => {
+                    if (result === true) {
+                        User.findByIdAndUpdate(req.params.id, newUserContent)
+                            .then((updatedUser) => (res.send(updatedUser)))
+                            .catch((err) => console.log(err));
+                    } else {
+                        res.json({ errorCode: 409, message: 'Password does not match' })
+                        console.log("Password does not match")
+                    }
+                })
+            })
+            .catch(err => console.log(err))
     },
 
     deleteUser: (req, res) => {
