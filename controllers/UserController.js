@@ -46,13 +46,20 @@ const user = {
 
     updateUser: (req, res) => {
         const newUserContent = {
-            email: req.body.email,
-            password: req.body.password,
-            name: req.body.name,
+            email: req.body.user.email,
+            password: req.body.newPassword,
+            name: req.body.user.name,
         };
-        User.findByIdAndUpdate(req.params.id, newUserContent)
-            .then((updatedUser) => (res.send(updatedUser)))
-            .catch((err) => console.log(err));
+        bcrypt.compare(req.body.password, user.password, (err, result) => {
+            if (result === true) {
+                User.findByIdAndUpdate(req.params.id, newUserContent)
+                    .then((updatedUser) => (res.send(updatedUser)))
+                    .catch((err) => console.log(err));
+            } else {
+                res.json({ errorCode: 409, message: 'Password does not match' })
+                console.log("Password does not match")
+            }
+        })
     },
 
     deleteUser: (req, res) => {
