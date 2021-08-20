@@ -29,9 +29,9 @@ userSchema.pre('save', function (next) {
         next();
     })
 });
-UsersSchema.pre('findByIdAndUpdate', async function () {
-    this._update.password = await bcrypt.hash(this._update.password, 10)
-})
+// UsersSchema.pre('findByIdAndUpdate', async function () {
+//     this._update.password = await bcrypt.hash(this._update.password, 10)
+// })
 // userSchema.pre('findByIdAndUpdate', function (next) {
 //     var user = this;
 //     bcrypt.hash(user.password, 10, function (err, hash) {
