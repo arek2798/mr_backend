@@ -34,7 +34,12 @@ userSchema.pre('save', function (next) {
     })
 });
 userSchema.pre('findByIdAndUpdate', function () {
-    this._update.password = bcrypt.hash(this._update.password, 10)
+    // this._update.password = bcrypt.hash(this._update.password, 10)
+    var user = this;
+    if (user.isModified("password")) {
+        user.password = bcrypt.hash(user.password, 10);
+        next();
+    }
 })
 // userSchema.pre('findByIdAndUpdate', function (next) {
 //     var user = this;
