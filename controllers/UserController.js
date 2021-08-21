@@ -44,16 +44,7 @@ const user = {
             .catch(err => console.log(err))
     },
 
-    updateUser: (req, res) => {
-
-        // bcrypt.hash(req.body.newPassword, 10, function (err, hash) {
-        //     if (err) {
-        //         console.log(err);
-        //     }
-        //     console.log(hash);
-        //     hashedPassword = hash;
-        // })
-        // console.log(hashedPassword);
+    changePassword: (req, res) => {
         const newUserContent = {
             email: req.body.user.email,
             password: req.body.newPassword,
@@ -65,12 +56,8 @@ const user = {
                 bcrypt.compare(req.body.password, user.password, (err, result) => {
                     if (result === true) {
                         newUserContent.password = bcrypt.hashSync(req.body.newPassword, 10);
-                        // bcrypt.hash(req.body.newPassword, 10, async (err, hash) => {
-                        //     newUserContent.password = hash
-                        // });
-                        console.log(newUserContent);
                         User.findByIdAndUpdate(req.params.id, newUserContent)
-                            .then((updatedUser) => (res.send(updatedUser)))
+                            .then((updatedUser) => (res.json({ errorCode: 201, message: 'Password has been changed', id: updatedUser._id })))
                             .catch((err) => console.log(err));
                     } else {
                         res.json({ errorCode: 409, message: 'Password does not match' })
