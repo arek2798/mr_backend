@@ -69,7 +69,7 @@ const user = {
     },
 
     deleteUser: (req, res) => {
-        Event.findByIdAndDelete(req.params.id)
+        User.findByIdAndDelete(req.params.id)
             .then(result => {
                 if (!result) {
                     res.sendStatus(404);
