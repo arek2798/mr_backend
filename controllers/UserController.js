@@ -65,7 +65,7 @@ const user = {
                 bcrypt.compare(req.body.password, user.password, (err, result) => {
                     if (result === true) {
                         // newUserContent.password = bcrypt.hash(req.body.newPassword, 10).then(() => hash);
-                        bcrypt.hash(req.body.newPassword, salt, (err, hash) => {
+                        bcrypt.hash(req.body.newPassword, 10, (err, hash) => {
                             newUserContent.password = hash
                         });
                         User.findByIdAndUpdate(req.params.id, newUserContent)
