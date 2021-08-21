@@ -21,6 +21,9 @@ const userStats = {
 
         try {
             const newUserStats = await new UserStats(newUserStatsContent).save((err, userStats) => {
+                if (err) {
+                    console.log(err);
+                }
                 res.send(userStats);
                 console.log(userStats);
             });
