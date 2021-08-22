@@ -28,12 +28,12 @@ const UserStatsSchema = new Schema({
     },
     lessonsStats: [
         {
-            lessonId: { type: String, unique: true },
+            lessonId: { type: String },
         }
     ],
     testsStats: [
         {
-            testId: { type: String, unique: true },
+            testId: { type: String },
             maksScore: Number,
         }
     ],
