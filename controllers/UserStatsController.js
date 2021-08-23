@@ -3,6 +3,8 @@ require('../models/UserStats');
 
 const UserStats = mongoose.model('userStats');
 
+UserStats.syncIndexes();
+
 const userStats = {
     addUserStats: async (req, res) => {
         const newUserStatsContent = {
