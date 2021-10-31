@@ -14,6 +14,9 @@ const QuestionSchema = new Schema({
     answers: {
         type: Array,
         required: true,
+    },
+    img: {
+        type: String
     }
 }, { collection: "questions" });
 
