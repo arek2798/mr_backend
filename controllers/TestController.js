@@ -7,7 +7,8 @@ const test = {
     addTest: async (req, res) => {
         const newTestContent = {
             title: req.body.title,
-            slug: req.body.slug
+            slug: req.body.slug,
+            icon: req.body.icon
         };
 
         try {
