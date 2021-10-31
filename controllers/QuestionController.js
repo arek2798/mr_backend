@@ -28,6 +28,12 @@ const question = {
             .then((results) => res.send(results))
             .catch((err) => console.log(err));
     },
+    getAllQuestions: (req, res) => {
+        console.log(req.query);
+        Question.find()
+            .then((results) => res.send(results))
+            .catch((err) => console.log(err));
+    },
     getQuestion: (req, res) => {
         console.log(req.query);
         Question.find({ _id: req.query.id })

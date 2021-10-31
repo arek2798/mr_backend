@@ -15,6 +15,7 @@ router.put('/userstats/:id', userStats.updateUserStats);
 router.delete('/userstats/:id', userStats.deleteUserStats);
 
 router.get('/questions', question.getTestQuestions);
+router.get('/questions/all', question.getAllQuestions);
 router.get('/question', question.getQuestion);
 router.post('/question', question.addQuestion);
 
